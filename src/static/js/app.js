@@ -53,7 +53,7 @@ function TodoListCard() {
         <React.Fragment>
             <AddItemForm onNewItem={onNewItem} />
             {items.length === 0 && (
-                <p className="text-center">No items yet! Add one above!</p>
+                <p className="text-center">You have no todo items yet! Add one above!</p>
             )}
             {items.map(item => (
                 <ItemDisplay
@@ -71,6 +71,8 @@ function AddItemForm({ onNewItem }) {
     const { Form, InputGroup, Button } = ReactBootstrap;
 
     const [newItem, setNewItem] = React.useState('');
+    const [newItem2 , setNewItem2] = React.useState(0);
+    const [newItem3 , setNewItem3] = React.useState(0);
     const [submitting, setSubmitting] = React.useState(false);
 
     const submitNewItem = e => {
@@ -90,13 +92,27 @@ function AddItemForm({ onNewItem }) {
     };
 
     return (
-        <Form onSubmit={submitNewItem}>
+        <form action="https://github.com/Benjamin2602">
             <InputGroup className="mb-3">
                 <Form.Control
                     value={newItem}
                     onChange={e => setNewItem(e.target.value)}
                     type="text"
-                    placeholder="New Item"
+                    placeholder="name"
+                    aria-describedby="basic-addon1"
+                />
+                 <Form.Control
+                    value={newItem2}
+                    onChange={e => setNewItem2(e.target.value)}
+                    type="number"
+                    placeholder="age"
+                    aria-describedby="basic-addon1"
+                />
+                     <Form.Control
+                    value={newItem3}
+                    onChange={e => setNewItem3(e.target.value)}
+                    type="number"
+                    placeholder="salary"
                     aria-describedby="basic-addon1"
                 />
                 <InputGroup.Append>
@@ -110,7 +126,7 @@ function AddItemForm({ onNewItem }) {
                     </Button>
                 </InputGroup.Append>
             </InputGroup>
-        </Form>
+        </form>
     );
 }
 
